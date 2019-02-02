@@ -1,0 +1,104 @@
+{
+  "_from": "@sensenet/client-core",
+  "_id": "@sensenet/client-core@1.3.0",
+  "_inBundle": false,
+  "_integrity": "sha512-M3bkogpch2smY6VeoXJh6SWjkGuIKyOZ0cNbdtB52E/sF2vMmMqsVhNxhrU1YssPxCAT1sbJ5zMvpKeh8B5qxg==",
+  "_location": "/@sensenet/client-core",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@sensenet/client-core",
+    "name": "@sensenet/client-core",
+    "escapedName": "@sensenet%2fclient-core",
+    "scope": "@sensenet",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@sensenet/client-core/-/client-core-1.3.0.tgz",
+  "_shasum": "723b1004a8fc691fe02610f26283d4b1e2e61e44",
+  "_spec": "@sensenet/client-core",
+  "_where": "C:\\Projetos\\Outros\\Angular\\hr\\ClientApp",
+  "author": {
+    "name": "Sense/Net",
+    "email": "snteam@sensenet.com",
+    "url": "http://sensenet.com/"
+  },
+  "bundleDependencies": false,
+  "config": {
+    "commitizen": {
+      "path": "sensenet-kfi-cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "@sensenet/client-utils": "^1.1.0",
+    "@sensenet/default-content-types": "^1.1.0",
+    "@sensenet/query": "^1.0.1",
+    "@types/uuid": "^3.4.3",
+    "uuid": "^3.3.2"
+  },
+  "deprecated": false,
+  "description": "Core Client package for sensenet",
+  "devDependencies": {
+    "@types/chai": "^4.1.4",
+    "@types/mocha": "^5.2.5",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "nyc": "^12.0.2",
+    "rimraf": "^2.6.2",
+    "tslint": "^5.11.0",
+    "typescript": "^3.0.1"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "homepage": "https://sensenet.com",
+  "keywords": [
+    "sensenet",
+    "ecm",
+    "javascript",
+    "REST",
+    "API"
+  ],
+  "license": "GPL-2.0",
+  "main": "./dist/index.js",
+  "name": "@sensenet/client-core",
+  "nyc": {
+    "exclude": [
+      "temp/test/**/*.*",
+      "temp/src/**/I*.js",
+      "**/index.js"
+    ],
+    "include": "temp/src/**/*.*",
+    "check-coverage": true,
+    "cache": true,
+    "all": true,
+    "reporter": [
+      "lcov",
+      "text-summary",
+      "json"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "rimraf dist && tsc -p tsconfig.json",
+    "commit": "git-cz",
+    "prebuild": "tslint --project tsconfig.json",
+    "precommit": "npm run test",
+    "prepublishOnly": "npm run test && npm run build",
+    "pretest": "tslint --project tsconfig.test.json && rimraf temp && tsc -p tsconfig.test.json",
+    "publish:development": "npm run build && npm t && npm run typedoc && npm publish --tag development",
+    "test": "rimraf coverage && nyc mocha -p tsconfig.test.json ./temp/test/index.js",
+    "typedoc": "typedoc --mode file --out documentation src --tsconfig tsconfig.json --theme c:/Users/%USERNAME%/AppData/Roaming/npm/node_modules/@sensenet/typedoc-theme/sn-theme"
+  },
+  "typings": "./dist/index.d.ts",
+  "version": "1.3.0"
+}
